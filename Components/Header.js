@@ -6,7 +6,7 @@ import {Appbar} from 'react-native-paper';
 import {connect} from 'react-redux';
 
 const Header = ({title, loggedIn, userLogout, user}) => (
-  <Appbar.Header>
+  <Appbar.Header style={{margin: 0}}>
     <Appbar.Content title={title} />
     {loggedIn ? (
       <>

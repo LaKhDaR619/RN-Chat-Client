@@ -11,6 +11,7 @@ import {
   IconButton,
   Colors,
   Text,
+  Paragraph,
 } from 'react-native-paper';
 
 import {connect} from 'react-redux';
@@ -105,50 +106,56 @@ function MessagesScreen({
 
   return (
     <View style={{flex: 1}}>
-      <Header title="Messages" />
       <Title
         style={{
-          textAlign: 'center',
           backgroundColor: 'purple',
+          textAlign: 'center',
           color: 'white',
-          padding: 15,
+          padding: 10,
+          marginTop: 0,
         }}>
         {friends[selectedIndex].username}
       </Title>
 
       <ScrollView
         contentContainerStyle={{
-          flex: 1,
           paddingHorizontal: 15,
           justifyContent: 'flex-end',
         }}
+        scrollEnabled={true}
         ref={scrollViewRef}
         onContentSizeChange={() =>
           scrollViewRef.current.scrollToEnd({animated: true})
         }>
         {messages.map((item, index) => (
-          <List.Item
-            key={index.toString()}
-            title={item.message}
-            style={{padding: 0, margin: 0}}
-            titleStyle={{
-              backgroundColor:
-                item.sender === user.username ? '#0099FF' : '#373737',
-              color: 'white',
-              fontSize: 16,
-              alignSelf:
-                item.sender === user.username ? 'flex-end' : 'flex-start',
-              padding: 10,
-              borderRadius: 50,
-            }}
-            right={() => {
-              return item.pending ? <ActivityIndicator size="small" /> : null;
-            }}
-          />
+          <View key={index.toString()} style={{flexDirection: 'column'}}>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent:
+                  item.sender === user.username ? 'flex-end' : 'flex-start',
+              }}>
+              <Paragraph
+                style={{
+                  backgroundColor:
+                    item.sender === user.username ? '#0099FF' : '#373737',
+                  color: 'white',
+                  fontSize: 16,
+
+                  padding: 10,
+                  borderRadius: 50,
+                }}>
+                {item.message}
+              </Paragraph>
+              {item.pending ? (
+                <ActivityIndicator size="small" style={{paddingLeft: 10}} />
+              ) : null}
+            </View>
+          </View>
         ))}
         {friends[selectedIndex].typing ? (
           <TypingAnimation
-            style={{marginBottom: 40, marginLeft: 15}}
+            style={{marginTop: 20, marginBottom: 40, marginLeft: 20}}
             dotRadius={5}
             dotMargin={10}
           />
@@ -159,6 +166,7 @@ function MessagesScreen({
         style={{
           flexDirection: 'row',
           justifyContent: 'flex-end',
+          marginHorizontal: 15,
         }}>
         <TextInput
           mode="outlined"

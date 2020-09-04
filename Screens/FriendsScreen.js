@@ -31,11 +31,13 @@ function FriendsScreen({
         <List.Item
           key={index}
           title={item.username}
+          titleStyle={{color: 'black'}}
           description={
             item.messages.length > 0
               ? item.messages[item.messages.length - 1].message
               : `Say Hi to: ${item.username}`
           }
+          descriptionStyle={{color: 'grey'}}
           left={() => (
             <Avatar.Image
               size={30}
@@ -66,6 +68,7 @@ function FriendsScreen({
         style={{
           flexDirection: 'column',
           justifyContent: 'center',
+          marginHorizontal: 20,
         }}>
         <TextInput
           mode="outlined"
