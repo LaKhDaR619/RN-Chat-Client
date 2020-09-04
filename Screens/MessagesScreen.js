@@ -117,6 +117,11 @@ function MessagesScreen({
       </Title>
 
       <ScrollView
+        contentContainerStyle={{
+          flex: 1,
+          paddingHorizontal: 15,
+          justifyContent: 'flex-end',
+        }}
         ref={scrollViewRef}
         onContentSizeChange={() =>
           scrollViewRef.current.scrollToEnd({animated: true})
@@ -142,7 +147,11 @@ function MessagesScreen({
           />
         ))}
         {friends[selectedIndex].typing ? (
-          <TypingAnimation style={{margin: 30}} dotRadius={5} dotMargin={10} />
+          <TypingAnimation
+            style={{marginBottom: 40, marginLeft: 15}}
+            dotRadius={5}
+            dotMargin={10}
+          />
         ) : null}
       </ScrollView>
 

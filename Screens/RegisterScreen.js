@@ -62,6 +62,7 @@ function RegisterScreen({
         <TextInput
           label="Password"
           mode="outlined"
+          secureTextEntry={true}
           value={inputFields.password}
           onChangeText={(text) =>
             setInputFields({...inputFields, password: text})

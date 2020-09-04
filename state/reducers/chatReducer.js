@@ -11,10 +11,12 @@ const initialState = {
 const chatReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'SET_FRIENDS':
+      const {friends} = action.payload;
       return {
         ...state,
         ...action.payload,
-        messages: action.payload.friends[state.selectedIndex].messages,
+        messages:
+          friends.length > 0 ? friends[state.selectedIndex].messages : [],
       };
     case 'SET_SELECTED_INDEX': {
       return {
