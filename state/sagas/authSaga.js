@@ -1,7 +1,7 @@
 import {put, call} from 'redux-saga/effects';
 
-//const host = 'https://chettos.herokuapp.com';
-const host = 'http://192.168.8.101:5000';
+const host = 'https://chettos.herokuapp.com';
+//const host = 'http://192.168.8.101:5000';
 
 // check if the user is logged in
 export function* checkLogin() {

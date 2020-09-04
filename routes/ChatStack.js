@@ -9,8 +9,8 @@ import {connect} from 'react-redux';
 
 import io from 'socket.io-client';
 
-//const host = 'https://chettos.herokuapp.com';
-const host = 'http://192.168.8.101:5000';
+const host = 'https://chettos.herokuapp.com';
+//const host = 'http://192.168.8.101:5000';
 let socket;
 
 let Sound = require('react-native-sound');
